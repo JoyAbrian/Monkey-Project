@@ -39,4 +39,12 @@ public class AnomalyManager : MonoBehaviour
         }
         return null;
     }
+
+    public void ResetAnomalies()
+    {
+        foreach (var anomaly in anomalies)
+        {
+            anomaly.ResetAnomaly();
+        }
+    }
 }
