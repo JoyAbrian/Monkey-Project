@@ -26,8 +26,6 @@ public class RadialSelection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GenerateRadialPart();
-        GetSelectedRadialPart();
     }
 
     public void GenerateRadialPart()

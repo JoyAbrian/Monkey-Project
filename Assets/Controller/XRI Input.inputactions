@@ -1,0 +1,34 @@
+{
+    "name": "XRI Input",
+    "maps": [
+        {
+            "name": "VR Controller",
+            "id": "ee26f8f6-e215-4f46-b73d-512891d8c34c",
+            "actions": [
+                {
+                    "name": "SpawnRadialPart",
+                    "type": "Button",
+                    "id": "66277f87-823b-4f9f-894b-60c966ac4642",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "85a3bbec-9815-4db5-b117-fc7f9a874062",
+                    "path": "<XRController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpawnRadialPart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
