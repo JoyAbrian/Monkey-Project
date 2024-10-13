@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class CameraSwitcher : MonoBehaviour{
     public Camera[] cctvCameras; // Array atau List kamera yang akan dipakai CCTV
+    public SoundType[] soundLists; // Array atau List suara yang akan dipakai CCTV
+
     public RenderTexture cctvRenderTexture; // Render Texture yang akan digunakan oleh CCTV
 
     private int currentCameraIndex = 0; // Menyimpan indeks kamera yang sedang aktif
 
     private void Start()
     {
+        SoundManager.PlayAmbience(soundLists[currentCameraIndex]);
+
         // Inisialisasi pertama, pastikan semua kamera nonaktif kecuali yang pertama
         for (int i = 0; i < cctvCameras.Length; i++)
         {
@@ -27,6 +31,8 @@ public class CameraSwitcher : MonoBehaviour{
     // Fungsi untuk berpindah ke kamera berikutnya
     public void SwitchToNextCamera()
     {
+        SoundManager.StopAmbience();
+
         // Matikan kamera saat ini
         DeactivateCamera(cctvCameras[currentCameraIndex]);
 
@@ -35,6 +41,7 @@ public class CameraSwitcher : MonoBehaviour{
 
         // Aktifkan kamera berikutnya
         ActivateCamera(cctvCameras[currentCameraIndex]);
+        SoundManager.PlayAmbience(soundLists[currentCameraIndex]);
     }
 
         public void SwitchToPreviousCamera()
