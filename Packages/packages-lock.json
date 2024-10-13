@@ -190,25 +190,14 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.xr.oculus.android": {
-      "version": "2.38.6",
+    "com.unity.xr.oculus": {
+      "version": "1.12.1",
       "depth": 0,
       "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.xr.oculus.standalone": {
-      "version": "2.38.4",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.xr.openvr.standalone": {
-      "version": "2.0.5",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
+      "dependencies": {
+        "com.unity.ugui": "1.0.0",
+        "com.unity.xr.management": "4.2.0"
+      },
       "url": "https://packages.unity.com"
     },
     "com.unity.modules.ai": {

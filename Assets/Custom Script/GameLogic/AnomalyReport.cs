@@ -4,10 +4,15 @@ public class AnomalyReport : MonoBehaviour
 {
     public AnomalyManager anomalyManager;
 
-    // Fungsi untuk melaporkan bahwa semua anomali telah diperbaiki
-    public void ReportAnomalies()
+    public void ReportAnomalies(Anomaly.RoomName roomName, Anomaly.AnomalyType anomalyType)
     {
-        Debug.Log("Anomali dilaporkan. Mengembalikan semua objek ke state awal.");
-        anomalyManager.ResetAnomalies();
+        if (anomalyManager.ValidateReport(roomName, anomalyType))
+        {
+            Debug.Log($"Anomali {anomalyType} di ruangan {roomName} telah dilaporkan dan diperbaiki.");
+        }
+        else
+        {
+            Debug.Log($"Tidak ada anomali yang cocok di ruangan {roomName} dengan jenis {anomalyType}.");
+        }
     }
 }
