@@ -5,15 +5,19 @@ using UnityEngine;
 public class SwitchCamera : MonoBehaviour
 {
     public Material[] cameraList;
+    public SoundType[] cameraSounds;
     public int currentCameraIndex = 0;
 
     private Renderer objectRenderer;
 
     private void Start()
     {
-        objectRenderer = GetComponent<Renderer>();
+        SoundManager.PlayAmbience(SoundType.AmbienceControlRoom, 1f);
 
+        objectRenderer = GetComponent<Renderer>();
         objectRenderer.material = cameraList[currentCameraIndex];
+
+        PlayCameraSound();
     }
 
     private void Update()
@@ -40,6 +44,7 @@ public class SwitchCamera : MonoBehaviour
         {
             currentCameraIndex = 0;
         }
+        PlayCameraSound();
     }
 
     public void PreviousCamera()
@@ -51,6 +56,17 @@ public class SwitchCamera : MonoBehaviour
         else
         {
             currentCameraIndex = cameraList.Length - 1;
+        }
+        PlayCameraSound();
+    }
+
+    private void PlayCameraSound()
+    {
+        SoundManager.StopSound();
+
+        if (cameraSounds != null && cameraSounds.Length > currentCameraIndex)
+        {
+            SoundManager.PlaySound(cameraSounds[currentCameraIndex], 0.3f);
         }
     }
 }

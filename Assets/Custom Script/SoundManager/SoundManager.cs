@@ -23,10 +23,13 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundList[] soundList;
     private static SoundManager instance;
     private AudioSource audioSource;
+    private AudioSource ambienceSource;
 
     private void Awake()
     {
         instance = this;
+        ambienceSource = gameObject.AddComponent<AudioSource>();
+        ambienceSource.loop = true;
     }
 
     private void Start()
@@ -39,6 +42,25 @@ public class SoundManager : MonoBehaviour
         AudioClip[] clips = instance.soundList[(int)sound].Sounds;
         AudioClip randomClip = clips[UnityEngine.Random.Range(0, clips.Length)];
         instance.audioSource.PlayOneShot(randomClip, volume);
+    }
+
+    public static void PlayAmbience(SoundType sound, float volume = 1)
+    {
+        AudioClip[] clips = instance.soundList[(int)sound].Sounds;
+        AudioClip randomClip = clips[UnityEngine.Random.Range(0, clips.Length)];
+        instance.ambienceSource.clip = randomClip;
+        instance.ambienceSource.volume = volume;
+        instance.ambienceSource.Play();
+    }
+
+    public static void StopSound()
+    {
+        instance.audioSource.Stop();
+    }
+
+    public static void StopAmbience()
+    {
+        instance.ambienceSource.Stop();
     }
 
 #if UNITY_EDITOR
